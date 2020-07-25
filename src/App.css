@@ -1,4 +1,18 @@
 .Pictogram {
-    width: 100px;
-    height: 100px;
+    margin: 10px;
+    width: 200px;
+    height: 200px;
+}
+
+.ControlBtn {
+    margin: 2px;
+}
+
+.PictoImage {
+    width: 80%;
+    height: 80%;
+}
+
+.PictoControl {
+    height: 20%;
 }

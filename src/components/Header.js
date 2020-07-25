@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-export default class  extends Component {
+export default class extends Component {
     render() {
         return (
             <div>
-                This is the header
+                <h1>This is the header</h1>
             </div>
-        )
+        );
     }
 }

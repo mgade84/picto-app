@@ -3,12 +3,12 @@ import PictogramControl from "./PictogramControl";
 
 export default class Pictogram extends Component {
     render() {
-        const { image, title } = this.props;
+        const { id, img, text } = this.props.data;
         return (
             <div className="Pictogram">
-                <PictogramControl />
-                <img className="PictoImage" src={image} alt="pictogram" />
-                <h2>{title}</h2>
+                <PictogramControl onDelete={() => this.props.onDelete(id)} />
+                <img className="PictoImage" src={img} alt="pictogram" />
+                <h2>{text}</h2>
             </div>
         );
     }

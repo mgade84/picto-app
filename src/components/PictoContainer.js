@@ -11,12 +11,22 @@ export default class PictoContainer extends Component {
             },
             {
                 id: 2,
-                img: "https://image.flaticon.com/icons/svg/70/70655.svg",
-                text: "Clicky hand",
+                img: "https://image.flaticon.com/icons/svg/2913/2913564.svg",
+                text: "Vaske hænder",
             },
             {
                 id: 3,
                 img: "https://image.flaticon.com/icons/svg/84/84101.svg",
+                text: "Take picture",
+            },
+            {
+                id: 4,
+                img: "https://image.flaticon.com/icons/svg/2971/2971019.svg",
+                text: "Legeplads",
+            },
+            {
+                id: 5,
+                img: "https://image.flaticon.com/icons/svg/2912/2912288.svg",
                 text: "Take picture",
             },
         ],

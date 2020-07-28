@@ -2,6 +2,10 @@ h1 {
     text-align: center;
 }
 
+p {
+    text-align: center;
+}
+
 .Pictogram {
     padding: 5px;
     margin: auto;
@@ -16,6 +20,7 @@ h1 {
 }
 
 .PictoImage {
+    display: block;
     padding: 5px;
     margin: auto;
     width: 60%;

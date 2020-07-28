@@ -8,7 +8,6 @@ function App() {
     return (
         <div className="App">
             <Header />
-            <header className="App-header">Headline</header>
             <PictoContainer />
         </div>
     );

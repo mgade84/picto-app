@@ -8,7 +8,7 @@ export default class Pictogram extends Component {
             <div className="Pictogram">
                 <PictogramControl onDelete={() => this.props.onDelete(id)} />
                 <img className="PictoImage" src={img} alt="pictogram" />
-                <h2>{text}</h2>
+                <p>{text}</p>
             </div>
         );
     }

@@ -7,12 +7,17 @@ export default class PictoContainer extends Component {
             {
                 id: 1,
                 img: "https://image.flaticon.com/icons/svg/70/70950.svg",
-                text: "Test text",
+                text: "This is a house",
             },
             {
                 id: 2,
-                img: "https://image.flaticon.com/icons/svg/70/70950.svg",
-                text: "Test text",
+                img: "https://image.flaticon.com/icons/svg/70/70655.svg",
+                text: "Clicky hand",
+            },
+            {
+                id: 3,
+                img: "https://image.flaticon.com/icons/svg/84/84101.svg",
+                text: "Take picture",
             },
         ],
     };

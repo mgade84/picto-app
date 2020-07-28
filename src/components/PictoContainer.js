@@ -27,6 +27,31 @@ export default class PictoContainer extends Component {
         this.setState({ pictograms });
     };
 
+    handleUp = (id) => {
+        console.log("Up", id);
+        let pictograms = this.state.pictograms;
+        const i = pictograms.findIndex((p) => p.id === id);
+        if (i > 0) {
+            const swap = this.getSwapper(pictograms);
+            pictograms = swap(i, i - 1);
+            this.setState({ pictograms });
+        }
+    };
+
+    handleDown = (id) => {
+        console.log("Down", id);
+        let pictograms = this.state.pictograms;
+        const i = pictograms.findIndex((p) => p.id === id);
+        if (i < pictograms.length - 1) {
+            const swap = this.getSwapper(pictograms);
+            pictograms = swap(i, i + 1);
+            this.setState({ pictograms });
+        }
+    };
+
+    getSwapper = ([...arr]) => (x, y) =>
+        arr.length > 1 ? (([arr[x], arr[y]] = [arr[y], arr[x]]), arr) : arr;
+
     render() {
         const { pictograms } = this.state;
         return (
@@ -36,6 +61,8 @@ export default class PictoContainer extends Component {
                         key={p.id}
                         data={p}
                         onDelete={this.handleDelete}
+                        onDown={this.handleDown}
+                        onUp={this.handleUp}
                     ></Pictogram>
                 ))}
             </div>

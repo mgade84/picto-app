@@ -13,7 +13,6 @@ function App() {
                 <TopBar />
                 <Drawer />
             </DrawerProvider>
-
             <PictoContainer />
         </div>
     );

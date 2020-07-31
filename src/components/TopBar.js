@@ -1,11 +1,13 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
 import { makeStyles } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import {
+    AppBar,
+    Toolbar,
+    Typography,
+    Button,
+    IconButton,
+} from "@material-ui/core";
 import { useDrawerUpdate } from "../context/DrawerContext";
 
 const useStyles = makeStyles(theme => ({

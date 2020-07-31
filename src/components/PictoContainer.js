@@ -2,47 +2,23 @@ import React, { Component } from "react";
 import Pictogram from "./Pictogram";
 import PictoAdder from "./PictoAdder";
 import { v4 as uuid } from "uuid";
+import { Grid } from "@material-ui/core";
+import { PictoData } from "../data/data";
 
 export default class PictoContainer extends Component {
     state = {
-        pictograms: [
-            {
-                id: uuid(),
-                img: "https://image.flaticon.com/icons/svg/70/70950.svg",
-                text: "This is a house",
-            },
-            {
-                id: uuid(),
-                img: "https://image.flaticon.com/icons/svg/2913/2913564.svg",
-                text: "Vaske hænder",
-            },
-            {
-                id: uuid(),
-                img: "https://image.flaticon.com/icons/svg/84/84101.svg",
-                text: "Take picture",
-            },
-            {
-                id: uuid(),
-                img: "https://image.flaticon.com/icons/svg/2971/2971019.svg",
-                text: "Legeplads",
-            },
-            {
-                id: uuid(),
-                img: "https://image.flaticon.com/icons/svg/2912/2912288.svg",
-                text: "Take picture",
-            },
-        ],
+        pictograms: PictoData,
     };
 
-    handleDelete = (id) => {
-        const pictograms = this.state.pictograms.filter((p) => p.id !== id);
+    handleDelete = id => {
+        const pictograms = this.state.pictograms.filter(p => p.id !== id);
         this.setState({ pictograms });
     };
 
-    handleUp = (id) => {
+    handleUp = id => {
         console.log("Up", id);
         let pictograms = this.state.pictograms;
-        const i = pictograms.findIndex((p) => p.id === id);
+        const i = pictograms.findIndex(p => p.id === id);
         if (i > 0) {
             const swap = this.getSwapper(pictograms);
             pictograms = swap(i, i - 1);
@@ -50,10 +26,10 @@ export default class PictoContainer extends Component {
         }
     };
 
-    handleDown = (id) => {
+    handleDown = id => {
         console.log("Down", id);
         let pictograms = this.state.pictograms;
-        const i = pictograms.findIndex((p) => p.id === id);
+        const i = pictograms.findIndex(p => p.id === id);
         if (i < pictograms.length - 1) {
             const swap = this.getSwapper(pictograms);
             pictograms = swap(i, i + 1);
@@ -78,7 +54,7 @@ export default class PictoContainer extends Component {
         const { pictograms } = this.state;
         return (
             <div>
-                {pictograms.map((p) => (
+                {pictograms.map(p => (
                     <Pictogram
                         key={p.id}
                         data={p}

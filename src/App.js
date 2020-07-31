@@ -39,7 +39,7 @@ function App() {
                     <Typography variant="h6" className={classes.title}>
                         Picto App
                     </Typography>
-                    <Button color="inherit">Login</Button>
+                    <Button color="inherit">TODO</Button>
                 </Toolbar>
             </AppBar>
             <PictoContainer />

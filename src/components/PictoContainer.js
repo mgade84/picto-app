@@ -53,18 +53,25 @@ export default class PictoContainer extends Component {
     render() {
         const { pictograms } = this.state;
         return (
-            <div>
+            <Grid
+                container
+                direction="column"
+                justify="flex-start"
+                alignItems="center"
+                spacing={2}
+            >
                 {pictograms.map(p => (
-                    <Pictogram
-                        key={p.id}
-                        data={p}
-                        onDelete={this.handleDelete}
-                        onDown={this.handleDown}
-                        onUp={this.handleUp}
-                    ></Pictogram>
+                    <Grid item key={p.id}>
+                        <Pictogram
+                            data={p}
+                            onDelete={this.handleDelete}
+                            onDown={this.handleDown}
+                            onUp={this.handleUp}
+                        ></Pictogram>
+                    </Grid>
                 ))}
                 <PictoAdder onAdd={this.handleAdd}></PictoAdder>
-            </div>
+            </Grid>
         );
     }
 }

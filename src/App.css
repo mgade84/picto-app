@@ -6,15 +6,6 @@ p {
     text-align: center;
 }
 
-.Pictogram {
-    padding: 5px;
-    margin: auto;
-    margin-bottom: 5px;
-    border: 2px solid black;
-    width: 200px;
-    height: 200px;
-}
-
 .ControlBtn {
     margin: 2px;
 }

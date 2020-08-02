@@ -6,6 +6,8 @@ import Drawer from "./components/Drawer";
 import { DrawerProvider } from "./context/DrawerContext";
 import TopBar from "./components/TopBar";
 
+export const AppName = "Picto App";
+
 function App() {
     return (
         <div className="App">

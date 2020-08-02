@@ -1,15 +1,22 @@
 import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import {
+    SwipeableDrawer,
+    Typography,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    Divider,
+} from "@material-ui/core";
+import AddBoxIcon from "@material-ui/icons/AddBox";
+import SaveIcon from "@material-ui/icons/Save";
+import CollectionsIcon from "@material-ui/icons/Collections";
+import SettingsIcon from "@material-ui/icons/Settings";
+import InfoIcon from "@material-ui/icons/Info";
 import { useDrawer, useDrawerUpdate } from "../context/DrawerContext";
+import { AppName } from "../App";
 
 const useStyles = makeStyles({
     list: {
@@ -34,12 +41,17 @@ export default function Drawer() {
         ) {
             return;
         }
-        console.log("Toggle", open);
-
         setOpen(open);
     };
 
-    const list = anchor => (
+    const createMenuItem = (icon, text) => (
+        <ListItem button key={text}>
+            <ListItemIcon>{icon}</ListItemIcon>
+            <ListItemText primary={text} />
+        </ListItem>
+    );
+
+    const list = () => (
         <div
             className={clsx(classes.list, {
                 [classes.fullList]: false,
@@ -48,26 +60,20 @@ export default function Drawer() {
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
         >
+            <Typography variant="h6" className={classes.title}>
+                {AppName}
+            </Typography>
+            <Divider />
             <List>
-                {["Top", "Center", "Bottom"].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
+                {createMenuItem(<AddBoxIcon />, "New Picto")}
+                {createMenuItem(<SaveIcon />, "Save Picto")}
+                {createMenuItem(<CollectionsIcon />, "My Picto collection")}
+                {/* {["Top", "Center", "Bottom"].map(defMenu)} */}
             </List>
             <Divider />
             <List>
-                {["Item 1", "Item 2"].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
+                {createMenuItem(<SettingsIcon />, "Settings")}
+                {createMenuItem(<InfoIcon />, "About")}
             </List>
         </div>
     );

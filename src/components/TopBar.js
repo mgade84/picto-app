@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
+import { AppName } from "../App";
 import {
     AppBar,
     Toolbar,
@@ -42,7 +43,7 @@ export default function TopBar() {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" className={classes.title}>
-                    Picto App
+                    {AppName}
                 </Typography>
                 <Button color="inherit">TODO</Button>
             </Toolbar>

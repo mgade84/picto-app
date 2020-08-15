@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Pictogram from "./Pictogram";
 import PictoAdder from "./PictoAdder";
 import { v4 as uuid } from "uuid";

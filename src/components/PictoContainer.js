@@ -4,9 +4,10 @@ import PictoAdder from "./PictoAdder";
 import { v4 as uuid } from "uuid";
 import { Grid } from "@material-ui/core";
 import { PictoData } from "../data/data";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export default function PictoContainer(props) {
-    const [state, setState] = useState({
+    const [state, setState] = useLocalStorage("pictograms", {
         pictograms: PictoData,
     });
 

@@ -19,6 +19,7 @@ import {
     useTheme,
 } from "@material-ui/core";
 import useFlaticonSearch from "../hooks/useFlaticonSearch";
+import IconSelector from "./IconSelector";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -55,8 +56,8 @@ function SearchDialog(props) {
         onClose(selectedValue);
     };
 
-    const handleListItemClick = value => {
-        onClose(value);
+    const handleAddIcon = icon => {
+        onClose(icon);
     };
 
     const handleSearch = query => {
@@ -73,17 +74,8 @@ function SearchDialog(props) {
             </DialogTitle>
             <SearchForm handleSearch={handleSearch} />
             {error && <div>Error: {JSON.stringify(error)}</div>}
-            <List>
-                {icons.map(icon => (
-                    <ListItem key={icon.id}>
-                        <img
-                            alt=""
-                            src={icon.images.svg}
-                            height="50"
-                            width="50"
-                        />
-                    </ListItem>
-                ))}
+            <IconSelector icons={icons} handleSelectIcon={handleAddIcon} />
+            {/* <List>
                 <ListItem
                     autoFocus
                     button
@@ -96,7 +88,7 @@ function SearchDialog(props) {
                     </ListItemAvatar>
                     <ListItemText primary="Add account" />
                 </ListItem>
-            </List>
+            </List> */}
         </Dialog>
     );
 }
@@ -148,10 +140,6 @@ export default function PictoAdder2({ onAdd }) {
 
     return (
         <div>
-            <Typography variant="subtitle1">
-                Selected: {selectedValue}
-            </Typography>
-            <br />
             <Button
                 variant="outlined"
                 color="primary"

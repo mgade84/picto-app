@@ -1,18 +1,18 @@
 import React from "react";
 import PictogramControl from "./PictogramControl";
 import {
-    Card,
     makeStyles,
     CardContent,
     Typography,
     CardMedia,
+    Paper,
 } from "@material-ui/core";
 
 const useStyles = makeStyles({
     root: {
         width: 200,
         height: 280,
-        border: "3px solid",
+        border: "2px solid",
     },
 });
 
@@ -22,11 +22,11 @@ export default function Pictogram(props) {
     const classes = useStyles();
 
     return (
-        <Card className={classes.root} variant="outlined">
+        <Paper className={classes.root} elevation={5}>
             <CardContent>
                 {/* <img className="PictoImage" src={img} alt="pictogram" /> */}
                 <CardMedia component="img" image={img} />
-                <Typography variant="h5" component="h1">
+                <Typography variant="h5" component="h1" align="center">
                     {text}
                 </Typography>
             </CardContent>
@@ -38,6 +38,6 @@ export default function Pictogram(props) {
                     onUp={() => onUp(id)}
                 />
             </div>
-        </Card>
+        </Paper>
     );
 }

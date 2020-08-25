@@ -1,6 +1,5 @@
 import React from "react";
 import Pictogram from "./Pictogram";
-import { v4 as uuid } from "uuid";
 import { Grid } from "@material-ui/core";
 import { PictoData } from "../data/data";
 import useLocalStorage from "../hooks/useLocalStorage";
@@ -40,16 +39,6 @@ export default function PictoContainer(props) {
 
     const getSwapper = ([...arr]) => (x, y) =>
         arr.length > 1 ? (([arr[x], arr[y]] = [arr[y], arr[x]]), arr) : arr;
-
-    const handleAdd = () => {
-        const newPic = {
-            id: uuid(),
-            img: "https://image.flaticon.com/icons/svg/2912/2912288.svg",
-            text: "Take picture",
-        };
-        const pictograms = [...state.pictograms, newPic];
-        setState({ pictograms });
-    };
 
     const handleFlaticonAdd = icon => {
         if (icon) {

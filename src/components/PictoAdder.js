@@ -3,7 +3,9 @@ import Button from "@material-ui/core/Button";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
 import SearchIcon from "@material-ui/icons/Search";
+import AddIcon from "@material-ui/icons/Add";
 import {
+    Fab,
     IconButton,
     InputBase,
     makeStyles,
@@ -122,13 +124,9 @@ export default function PictoAdder({ onAdd }) {
 
     return (
         <div>
-            <Button
-                variant="outlined"
-                color="primary"
-                onClick={handleClickOpen}
-            >
-                Open search dialog
-            </Button>
+            <Fab color="primary" onClick={handleClickOpen}>
+                <AddIcon />
+            </Fab>
             <SearchDialog open={open} onClose={handleClose} />
         </div>
     );

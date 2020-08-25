@@ -11,7 +11,7 @@ import {
 const useStyles = makeStyles({
     root: {
         width: 200,
-        height: 280,
+        height: 250,
         border: "2px solid",
     },
 });
@@ -26,18 +26,15 @@ export default function Pictogram(props) {
             <CardContent>
                 {/* <img className="PictoImage" src={img} alt="pictogram" /> */}
                 <CardMedia component="img" image={img} />
-                <Typography variant="h5" component="h1" align="center">
+                <Typography align="center" noWrap="true">
                     {text}
                 </Typography>
-            </CardContent>
-
-            <div className="Pictogram">
                 <PictogramControl
                     onDelete={() => onDelete(id)}
                     onDown={() => onDown(id)}
                     onUp={() => onUp(id)}
                 />
-            </div>
+            </CardContent>
         </Paper>
     );
 }

@@ -1,11 +1,10 @@
 import React from "react";
 import Pictogram from "./Pictogram";
-import PictoAdder from "./PictoAdder";
 import { v4 as uuid } from "uuid";
 import { Grid } from "@material-ui/core";
 import { PictoData } from "../data/data";
 import useLocalStorage from "../hooks/useLocalStorage";
-import PictoAdder2 from "./PictoAdder2";
+import PictoAdder from "./PictoAdder";
 
 export default function PictoContainer(props) {
     const [state, setState] = useLocalStorage("pictograms", {
@@ -52,14 +51,16 @@ export default function PictoContainer(props) {
         setState({ pictograms });
     };
 
-    const handleFlaticonAdd = data => {
-        const newPic = {
-            id: uuid(),
-            img: "https://image.flaticon.com/icons/svg/813/813429.svg",
-            text: "Thug life",
-        };
-        const pictograms = [...state.pictograms, newPic];
-        setState({ pictograms });
+    const handleFlaticonAdd = icon => {
+        if (icon) {
+            const newPic = {
+                id: icon.id,
+                img: icon.images.svg,
+                text: icon.description,
+            };
+            const pictograms = [...state.pictograms, newPic];
+            setState({ pictograms });
+        }
     };
 
     const { pictograms } = state;
@@ -81,8 +82,7 @@ export default function PictoContainer(props) {
                     ></Pictogram>
                 </Grid>
             ))}
-            <PictoAdder onAdd={handleAdd}></PictoAdder>
-            <PictoAdder2 onAdd={handleFlaticonAdd} />
+            <PictoAdder onAdd={handleFlaticonAdd} />
         </Grid>
     );
 }

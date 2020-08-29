@@ -19,7 +19,7 @@ import InfoIcon from "@material-ui/icons/Info";
 import AppIcon from "@material-ui/icons/EmojiPeople";
 import { useDrawer, useDrawerUpdate } from "../context/DrawerContext";
 import { AppName } from "../App";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
     list: {
@@ -55,12 +55,12 @@ export default function Drawer() {
     };
 
     const createMenuItem = (icon, text) => (
-        <NavLink to="/about">
+        <Link to="/about">
             <ListItem key={text} button>
                 <ListItemIcon>{icon}</ListItemIcon>
                 <ListItemText primary={text} />
             </ListItem>
-        </NavLink>
+        </Link>
     );
 
     const list = () => (

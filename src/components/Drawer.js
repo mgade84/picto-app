@@ -20,6 +20,7 @@ import AppIcon from "@material-ui/icons/EmojiPeople";
 import { useDrawer, useDrawerUpdate } from "../context/DrawerContext";
 import { AppName } from "../App";
 import { Link } from "react-router-dom";
+import { Pages } from "../SiteMap";
 
 const useStyles = makeStyles({
     list: {
@@ -54,8 +55,8 @@ export default function Drawer() {
         setOpen(open);
     };
 
-    const createMenuItem = (icon, text) => (
-        <Link to="/about">
+    const createMenuItem = (icon, text, linkPath) => (
+        <Link to={linkPath}>
             <ListItem key={text} button>
                 <ListItemIcon>{icon}</ListItemIcon>
                 <ListItemText primary={text} />
@@ -82,15 +83,18 @@ export default function Drawer() {
                     <Typography variant="h5">{AppName}</Typography>
                 </ListItem>
                 <Divider />
-                {createMenuItem(<AddBoxIcon />, "New Picto")}
-                {createMenuItem(<SaveIcon />, "Save Picto")}
-                {createMenuItem(<CollectionsIcon />, "My Picto collection")}
-                {/* {["Top", "Center", "Bottom"].map(defMenu)} */}
+                {createMenuItem(<AddBoxIcon />, "New Picto", Pages.newPicto)}
+                {createMenuItem(<SaveIcon />, "Save Picto", Pages.save)}
+                {createMenuItem(
+                    <CollectionsIcon />,
+                    "My Picto collection",
+                    Pages.home
+                )}
             </List>
             <Divider />
             <List>
-                {createMenuItem(<SettingsIcon />, "Settings")}
-                {createMenuItem(<InfoIcon />, "About")}
+                {createMenuItem(<SettingsIcon />, "Settings", Pages.settings)}
+                {createMenuItem(<InfoIcon />, "About", Pages.about)}
             </List>
         </div>
     );

@@ -1,5 +1,6 @@
 const axios = require("axios");
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const port = 3001;
@@ -18,6 +19,8 @@ if (FLATICON_API_KEY) {
 
 let token = null;
 let expires = 0;
+
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.send("Picto App server");
@@ -67,4 +70,3 @@ app.get("/token", async (req, res) => {
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
 });
-

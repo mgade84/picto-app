@@ -2,9 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const SEARCH_URL = "https://api.flaticon.com/v2/search/icons/priority";
+const TOKEN_URL = "http://localhost:3001/token";
+const TOKEN_EXPIRE_OFFSET = 60 // Seconds
 
-const API_TOKEN =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiIyMzQ3ODYyMSIsInVpcCI6IjE3Mi4xOS4wLjkiLCJleHAiOjE1OTgyOTk4OTIsInVuYW1lIjoidXNlcjIzNDc4NjIxIiwicnBtIjoyNDAwLCJwcmVtaXVtIjpmYWxzZSwiYXBpa2V5IjoiMGI2Yzg4M2NiMjRlY2I4N2VmMmE4YzVmNTYwMjU2MTZmYmRkOWMxZCIsInNjb3BlIjpbIm93bmVkLnJlYWQiXSwiZGxpbWl0Ijo0MDAsImFwaWRsaW1pdCI6dHJ1ZX0.qH8N6q-OpuF-wZWQDpce8wOV7d25QzcGVMYm1Njg31E";
+let token = ""
+let tokenExpire = 0
 
 export default function useFlaticonSearch(query, limit, page) {
     const [icons, setIcons] = useState([]);
@@ -12,10 +14,29 @@ export default function useFlaticonSearch(query, limit, page) {
     const [error, setError] = useState(false);
 
     useEffect(() => {
+        const now = Date.now() / 1000; // timestamp in seconds
+
         let cancel;
         async function fetchData() {
             setLoading(true);
             setError(false);
+
+            if (now + TOKEN_EXPIRE_OFFSET > tokenExpire) {
+                try {
+                    const res = await axios.get(TOKEN_URL, {
+                        headers: {
+                            Accept: "application/json",
+                        },
+                    });
+                    const data = res.data;
+                    console.log("Got token result", data);
+                    token = data.token;
+                    tokenExpire = data.expires;
+                } catch (e) {
+                    console.log(e);
+                }
+            }
+
             try {
                 const res = await axios.get(SEARCH_URL, {
                     params: {
@@ -26,7 +47,7 @@ export default function useFlaticonSearch(query, limit, page) {
                     cancelToken: new axios.CancelToken(c => (cancel = c)),
                     headers: {
                         Accept: "application/json",
-                        Authorization: "Bearer " + API_TOKEN,
+                        Authorization: "Bearer " + token,
                     },
                 });
                 const data = res.data.data;
@@ -43,6 +64,8 @@ export default function useFlaticonSearch(query, limit, page) {
         if (query) {
             fetchData();
             return () => cancel();
+        } else {
+            setIcons([])
         }
     }, [query, limit, page]);
 

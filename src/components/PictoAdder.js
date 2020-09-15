@@ -70,7 +70,7 @@ function SearchDialog(props) {
     function renderSearchResults() {
         if (error) return <div>Error: {JSON.stringify(error, null, 2)}</div>;
         if (icons == null) return <div></div>;
-        if (icons.length == 0) return <div>No icons found for "{query}"</div>;
+        if (icons.length === 0) return <div>No icons found for "{query}"</div>;
         return <IconSelector icons={icons} handleSelectIcon={handleAddIcon} />;
     }
 

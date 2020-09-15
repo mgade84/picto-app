@@ -26,7 +26,7 @@ export default function Pictogram(props) {
             <CardContent>
                 {/* <img className="PictoImage" src={img} alt="pictogram" /> */}
                 <CardMedia component="img" image={img} />
-                <Typography align="center" noWrap="true">
+                <Typography align="center" noWrap={true}>
                     {text}
                 </Typography>
                 <PictogramControl

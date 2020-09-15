@@ -3,4 +3,5 @@ export const Pages = {
     about: "/about",
     settings: "/settings",
     newPicto: "/new",
+    save: "/save"
 };

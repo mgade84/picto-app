@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const SEARCH_URL = "https://api.flaticon.com/v2/search/icons/priority";
-const TOKEN_URL = "http://localhost:3001/token";
+const TOKEN_URL = "/token";
 const TOKEN_EXPIRE_OFFSET = 60 // Seconds
 
 let token = ""

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
 import SearchIcon from "@material-ui/icons/Search";
@@ -46,6 +46,12 @@ function SearchDialog(props) {
     const [page, setPage] = useState(1);
     const { loading, icons, error } = useFlaticonSearch(query, limit, page);
 
+    useEffect(() => {
+        if (open) {
+            setQuery("")
+        }
+    }, [open])
+
     const handleClose = () => {
         onClose();
     };
@@ -63,7 +69,8 @@ function SearchDialog(props) {
 
     function renderSearchResults() {
         if (error) return <div>Error: {JSON.stringify(error, null, 2)}</div>;
-        if (icons.length === 0) return <div>No icons found :-(</div>;
+        if (icons == null) return <div></div>;
+        if (icons.length == 0) return <div>No icons found for "{query}"</div>;
         return <IconSelector icons={icons} handleSelectIcon={handleAddIcon} />;
     }
 

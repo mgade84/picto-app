@@ -65,7 +65,7 @@ export default function useFlaticonSearch(query, limit, page) {
             fetchData();
             return () => cancel();
         } else {
-            setIcons([])
+            setIcons(null)
         }
     }, [query, limit, page]);
 

@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 8080;
 const args = process.argv.slice(2);
 const FLATICON_API_KEY = args[0];
 const TOKEN_EXPIRE_OFFSET = 5 * 60;

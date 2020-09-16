@@ -22,9 +22,7 @@ let expires = 0;
 
 app.use(cors());
 
-app.get("/", (req, res) => {
-    res.send("Picto App server");
-});
+app.use(express.static('../client/build'))
 
 app.get("/token", async (req, res) => {
     const now = Date.now() / 1000; // timestamp in seconds

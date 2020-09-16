@@ -8,7 +8,7 @@ import { Route, BrowserRouter as Router } from "react-router-dom";
 import About from "./pages/About";
 import Settings from "./pages/Settings";
 
-export const AppName = "Picto App";
+export const AppName = "Picto";
 
 function App() {
     return (

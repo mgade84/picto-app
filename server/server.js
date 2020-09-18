@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 8080;
 const args = process.argv.slice(2);
-const FLATICON_API_KEY = args[0];
+const FLATICON_API_KEY = process.env.FLATICON_API_KEY || args[0];
 const TOKEN_EXPIRE_OFFSET = 5 * 60;
 
 axios.defaults.headers.post["Content-Type"] = "application/json";
@@ -66,5 +66,5 @@ app.get("/token", async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`Server istening at port ${port}`);
 });

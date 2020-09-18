@@ -35,10 +35,7 @@ export default function TopBar() {
                     className={classes.menuButton}
                     color="inherit"
                     aria-label="menu"
-                    onClick={() => {
-                        console.log("Menu click");
-                        setOpenDrawer(true);
-                    }}
+                    onClick={() => setOpenDrawer(true)}
                 >
                     <MenuIcon />
                 </IconButton>

@@ -11,7 +11,6 @@ import {
     Divider,
 } from "@material-ui/core";
 import AddBoxIcon from "@material-ui/icons/AddBox";
-import SaveIcon from "@material-ui/icons/Save";
 import CollectionsIcon from "@material-ui/icons/Collections";
 import SettingsIcon from "@material-ui/icons/Settings";
 import InfoIcon from "@material-ui/icons/Info";
@@ -76,13 +75,12 @@ export default function Drawer() {
                     <Typography variant="h5">{AppName}</Typography>
                 </ListItem>
                 <Divider />
-                {createMenuItem(<AddBoxIcon />, "New Picto", Pages.newPicto)}
-                {createMenuItem(<SaveIcon />, "Save Picto", Pages.save)}
                 {createMenuItem(
                     <CollectionsIcon />,
                     "My Picto collection",
                     Pages.home
                 )}
+                {createMenuItem(<AddBoxIcon />, "New Picto", Pages.newPicto)}
             </List>
             <Divider />
             <List>

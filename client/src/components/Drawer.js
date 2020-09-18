@@ -9,18 +9,17 @@ import {
     ListItemIcon,
     ListItemText,
     Divider,
-    Paper,
 } from "@material-ui/core";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import SaveIcon from "@material-ui/icons/Save";
 import CollectionsIcon from "@material-ui/icons/Collections";
 import SettingsIcon from "@material-ui/icons/Settings";
 import InfoIcon from "@material-ui/icons/Info";
-import AppIcon from "@material-ui/icons/EmojiPeople";
 import { useDrawer, useDrawerUpdate } from "../context/DrawerContext";
 import { AppName } from "../App";
 import { Link } from "react-router-dom";
 import { Pages } from "../SiteMap";
+import { ReactComponent as Logo } from "../logo.svg";
 
 const useStyles = makeStyles({
     list: {
@@ -29,13 +28,9 @@ const useStyles = makeStyles({
     fullList: {
         width: "auto",
     },
-    appIcon: {
-        margin: "5px",
-        width: 30,
-        height: 30,
-    },
-    appIconBox: {
-        border: "1px solid",
+    appLogo: {
+        width: 50,
+        height: 50,
     },
 });
 
@@ -76,9 +71,7 @@ export default function Drawer() {
             <List>
                 <ListItem>
                     <ListItemIcon>
-                        <Paper elevation={3} className={classes.appIconBox}>
-                            <AppIcon className={classes.appIcon} />
-                        </Paper>
+                        <Logo className={classes.appLogo}></Logo>
                     </ListItemIcon>
                     <Typography variant="h5">{AppName}</Typography>
                 </ListItem>

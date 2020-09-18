@@ -63,7 +63,7 @@ function SearchDialog(props) {
     const handleSearch = query => {
         setQuery(query);
         setPage(1);
-        setLimit(25);
+        setLimit(40);
     };
 
     function renderSearchResults() {

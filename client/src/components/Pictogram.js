@@ -12,6 +12,7 @@ const useStyles = makeStyles({
     root: {
         width: 200,
         height: 250,
+        margin: "10px",
         border: "2px solid",
     },
 });

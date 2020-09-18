@@ -59,7 +59,6 @@ export default function PictoContainer(props) {
             direction="column"
             justify="flex-start"
             alignItems="center"
-            spacing={2}
         >
             {pictograms.map(p => (
                 <Grid item key={p.id}>

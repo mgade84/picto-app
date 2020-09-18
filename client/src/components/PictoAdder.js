@@ -48,9 +48,9 @@ function SearchDialog(props) {
 
     useEffect(() => {
         if (open) {
-            setQuery("")
+            setQuery("");
         }
-    }, [open])
+    }, [open]);
 
     const handleClose = () => {
         onClose();
@@ -61,7 +61,6 @@ function SearchDialog(props) {
     };
 
     const handleSearch = query => {
-        console.log("Submit:", query);
         setQuery(query);
         setPage(1);
         setLimit(25);

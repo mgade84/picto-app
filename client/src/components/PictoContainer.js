@@ -1,13 +1,12 @@
 import React from "react";
 import Pictogram from "./Pictogram";
 import { Grid } from "@material-ui/core";
-import { PictoData } from "../data/data";
 import useLocalStorage from "../hooks/useLocalStorage";
 import PictoAdder from "./PictoAdder";
 
 export default function PictoContainer(props) {
     const [state, setState] = useLocalStorage("pictograms", {
-        pictograms: PictoData,
+        pictograms: [],
     });
 
     const handleDelete = id => {
@@ -16,7 +15,6 @@ export default function PictoContainer(props) {
     };
 
     const handleUp = id => {
-        console.log("Up", id);
         let pictograms = state.pictograms;
         const i = pictograms.findIndex(p => p.id === id);
         if (i > 0) {
@@ -27,7 +25,6 @@ export default function PictoContainer(props) {
     };
 
     const handleDown = id => {
-        console.log("Down", id);
         let pictograms = state.pictograms;
         const i = pictograms.findIndex(p => p.id === id);
         if (i < pictograms.length - 1) {

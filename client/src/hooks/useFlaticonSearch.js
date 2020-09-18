@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 
 const SEARCH_URL = "https://api.flaticon.com/v2/search/icons/priority";
 const TOKEN_URL = "/token";
-const TOKEN_EXPIRE_OFFSET = 60 // Seconds
+const TOKEN_EXPIRE_OFFSET = 60; // Seconds
 
-let token = ""
-let tokenExpire = 0
+let token = "";
+let tokenExpire = 0;
 
 export default function useFlaticonSearch(query, limit, page) {
     const [icons, setIcons] = useState([]);
@@ -29,7 +29,6 @@ export default function useFlaticonSearch(query, limit, page) {
                         },
                     });
                     const data = res.data;
-                    console.log("Got token result", data);
                     token = data.token;
                     tokenExpire = data.expires;
                 } catch (e) {
@@ -65,7 +64,7 @@ export default function useFlaticonSearch(query, limit, page) {
             fetchData();
             return () => cancel();
         } else {
-            setIcons(null)
+            setIcons(null);
         }
     }, [query, limit, page]);
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuid } from "uuid";
 import Pictogram from "./Pictogram";
 import { Grid } from "@material-ui/core";
 import useLocalStorage from "../hooks/useLocalStorage";
@@ -40,7 +41,7 @@ export default function PictoContainer(props) {
     const handleFlaticonAdd = icon => {
         if (icon) {
             const newPic = {
-                id: icon.id,
+                id: uuid(),
                 img: icon.images.svg,
                 text: icon.description,
             };

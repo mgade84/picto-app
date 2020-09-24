@@ -15,12 +15,13 @@ export default function Settings() {
             <h2>Danger Zone</h2>
             <ul>
                 <li>
+                    Delete all pictograms{" "}
                     <Button
                         variant="contained"
-                        color="primary"
+                        color="secondary"
                         onClick={() => localStorage.removeItem("pictograms")}
                     >
-                        Clear pictograms
+                        Clear
                     </Button>
                 </li>
             </ul>

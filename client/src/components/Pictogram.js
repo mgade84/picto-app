@@ -11,9 +11,16 @@ import {
 const useStyles = makeStyles({
     root: {
         width: 200,
-        height: 250,
+        height: 220,
         margin: "10px",
         border: "2px solid",
+        position: "relative",
+    },
+    control: {
+        position: "absolute",
+        border: "2px solid",
+        left: "200px",
+        top: "10px",
     },
 });
 
@@ -25,12 +32,12 @@ export default function Pictogram(props) {
     return (
         <Paper className={classes.root} elevation={5}>
             <CardContent>
-                {/* <img className="PictoImage" src={img} alt="pictogram" /> */}
                 <CardMedia component="img" image={img} />
                 <Typography align="center" noWrap={true}>
                     {text}
                 </Typography>
                 <PictogramControl
+                    className={classes.control}
                     onDelete={() => onDelete(id)}
                     onDown={() => onDown(id)}
                     onUp={() => onUp(id)}

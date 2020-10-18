@@ -42,15 +42,8 @@ export default function Pictogram(props) {
     const [editImgUrl, setEditImgUrl] = useState(img);
     const [editText, setEditText] = useState(text);
 
-    function onEdit() {
-        setEditOpen(true);
-    }
-
-    function handleClose() {
-        setEditOpen(false);
-    }
-
     function handleSave(params) {
+        setEditOpen(false);
         console.log("Save", editText, editImgUrl);
     }
 
@@ -66,7 +59,7 @@ export default function Pictogram(props) {
                     <IconButton onClick={() => onDelete(id)}>
                         <DeleteIcon />
                     </IconButton>
-                    <IconButton onClick={onEdit}>
+                    <IconButton onClick={() => setEditOpen(true)}>
                         <EditIcon />
                     </IconButton>
                     <IconButton onClick={() => onUp(id)}>
@@ -77,7 +70,11 @@ export default function Pictogram(props) {
                     </IconButton>
                 </Paper>
             </PictoContent>
-            <Dialog onClose={handleClose} open={editOpen} fullScreen={false}>
+            <Dialog
+                onClose={() => setEditOpen(false)}
+                open={editOpen}
+                fullScreen={false}
+            >
                 <PictoContent
                     className={classes.root}
                     text={text}

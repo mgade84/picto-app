@@ -59,6 +59,14 @@ export default function Pictogram(props) {
         }
     }
 
+    function handleKeyPress(e) {
+        if (e.charCode === 13) {
+            // Enter
+            e.preventDefault();
+            handleSave();
+        }
+    }
+
     return (
         <>
             <PictoContent
@@ -101,6 +109,7 @@ export default function Pictogram(props) {
                     multiline
                     defaultValue={img}
                     onChange={e => setEditImgUrl(e.target.value)}
+                    onKeyPress={handleKeyPress}
                 />
                 <TextField
                     className={classes.edit}
@@ -109,6 +118,7 @@ export default function Pictogram(props) {
                     variant="outlined"
                     defaultValue={text}
                     onChange={e => setEditText(e.target.value)}
+                    onKeyPress={handleKeyPress}
                 />
                 <Button
                     className={classes.edit}

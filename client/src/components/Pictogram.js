@@ -35,16 +35,26 @@ const useStyles = makeStyles({
 });
 
 export default function Pictogram(props) {
-    const { data, onDelete, onDown, onUp } = props;
+    const { data, onDelete, onSave, onDown, onUp } = props;
     const { id, img, text } = data;
     const classes = useStyles();
     const [editOpen, setEditOpen] = useState(false);
     const [editImgUrl, setEditImgUrl] = useState(img);
     const [editText, setEditText] = useState(text);
+    const [saveError, setSaveError] = useState(false);
 
-    function handleSave(params) {
-        setEditOpen(false);
-        console.log("Save", editText, editImgUrl);
+    function handleEdit() {
+        setSaveError(false);
+        setEditOpen(true);
+    }
+
+    function handleSave() {
+        const success = onSave(id, editImgUrl, editText);
+        setSaveError(!success);
+
+        if (success) {
+            setEditOpen(false);
+        }
     }
 
     return (
@@ -59,7 +69,7 @@ export default function Pictogram(props) {
                     <IconButton onClick={() => onDelete(id)}>
                         <DeleteIcon />
                     </IconButton>
-                    <IconButton onClick={() => setEditOpen(true)}>
+                    <IconButton onClick={handleEdit}>
                         <EditIcon />
                     </IconButton>
                     <IconButton onClick={() => onUp(id)}>
@@ -106,6 +116,7 @@ export default function Pictogram(props) {
                 >
                     Save
                 </Button>
+                {saveError && <div>Error saving picto!</div>}
             </Dialog>
         </>
     );

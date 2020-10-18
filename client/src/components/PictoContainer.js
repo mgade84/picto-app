@@ -15,6 +15,18 @@ export default function PictoContainer(props) {
         setState({ pictograms });
     };
 
+    const handleSave = (id, img, text) => {
+        const pictograms = state.pictograms;
+        const index = pictograms.findIndex(e => e.id === id);
+        if (index >= 0) {
+            pictograms[index] = { id, img, text };
+            setState({ pictograms });
+            return true;
+        } else {
+            return false;
+        }
+    };
+
     const handleUp = id => {
         let pictograms = state.pictograms;
         const i = pictograms.findIndex(p => p.id === id);
@@ -63,6 +75,7 @@ export default function PictoContainer(props) {
                     <Pictogram
                         data={p}
                         onDelete={handleDelete}
+                        onSave={handleSave}
                         onDown={handleDown}
                         onUp={handleUp}
                     ></Pictogram>

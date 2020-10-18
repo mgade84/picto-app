@@ -45,6 +45,8 @@ export default function Pictogram(props) {
 
     function handleEdit() {
         setSaveError(false);
+        setEditImgUrl(img);
+        setEditText(text);
         setEditOpen(true);
     }
 
@@ -87,8 +89,8 @@ export default function Pictogram(props) {
             >
                 <PictoContent
                     className={classes.root}
-                    text={text}
-                    img={img}
+                    text={editText}
+                    img={editImgUrl}
                     elevation={5}
                 ></PictoContent>
                 <TextField

@@ -34,6 +34,14 @@ const useStyles = makeStyles(theme => ({
         height: 28,
         margin: 4,
     },
+    addButton: {
+        margin: 0,
+        position: "fixed",
+        top: "auto",
+        left: "auto",
+        bottom: "10px",
+        right: "10px",
+    },
 }));
 
 function SearchDialog(props) {
@@ -117,6 +125,7 @@ function SearchForm({ handleSearch }) {
 
 export default function PictoAdder({ onAdd }) {
     const [open, setOpen] = useState(false);
+    const classes = useStyles();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -129,7 +138,11 @@ export default function PictoAdder({ onAdd }) {
 
     return (
         <div>
-            <Fab color="primary" onClick={handleClickOpen}>
+            <Fab
+                color="primary"
+                onClick={handleClickOpen}
+                className={classes.addButton}
+            >
                 <AddIcon />
             </Fab>
             <SearchDialog open={open} onClose={handleClose} />

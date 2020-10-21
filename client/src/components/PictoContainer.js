@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 import Pictogram from "./Pictogram";
-import { Grid } from "@material-ui/core";
+import { FormControlLabel, Grid, Switch } from "@material-ui/core";
+import EditIcon from "@material-ui/icons/Edit";
 import useLocalStorage from "../hooks/useLocalStorage";
 import PictoAdder from "./PictoAdder";
 
@@ -9,6 +10,7 @@ export default function PictoContainer(props) {
     const [state, setState] = useLocalStorage("pictograms", {
         pictograms: [],
     });
+    const [editEnabled, setEditEnabled] = useState(false);
 
     const handleDelete = id => {
         const pictograms = state.pictograms.filter(p => p.id !== id);
@@ -62,6 +64,10 @@ export default function PictoContainer(props) {
         }
     };
 
+    const toggleEdit = () => {
+        setEditEnabled(!editEnabled);
+    };
+
     const { pictograms } = state;
     return (
         <Grid
@@ -78,9 +84,23 @@ export default function PictoContainer(props) {
                         onSave={handleSave}
                         onDown={handleDown}
                         onUp={handleUp}
+                        editEnabled={editEnabled}
                     ></Pictogram>
                 </Grid>
             ))}
+            <FormControlLabel
+                control={<Switch checked={editEnabled} onChange={toggleEdit} />}
+                labelPlacement="top"
+                label={<EditIcon />}
+                style={{
+                    margin: 0,
+                    position: "fixed",
+                    top: "auto",
+                    left: "auto",
+                    bottom: "80px",
+                    right: "10px",
+                }}
+            />
             <PictoAdder onAdd={handleFlaticonAdd} />
         </Grid>
     );

@@ -38,7 +38,7 @@ const useStyles = makeStyles({
 });
 
 export default function Pictogram(props) {
-    const { data, onDelete, onSave, onDown, onUp } = props;
+    const { data, onDelete, onSave, onDown, onUp, editEnabled } = props;
     const { id, img, text } = data;
     const classes = useStyles();
     const [editOpen, setEditOpen] = useState(false);
@@ -79,20 +79,22 @@ export default function Pictogram(props) {
                 img={img}
                 elevation={5}
             >
-                <Paper className={classes.control} elevation={2}>
-                    <IconButton onClick={() => onDelete(id)}>
-                        <DeleteIcon />
-                    </IconButton>
-                    <IconButton onClick={handleEdit}>
-                        <EditIcon />
-                    </IconButton>
-                    <IconButton onClick={() => onUp(id)}>
-                        <UpIcon />
-                    </IconButton>
-                    <IconButton onClick={() => onDown(id)}>
-                        <DownIcon />
-                    </IconButton>
-                </Paper>
+                {editEnabled && (
+                    <Paper className={classes.control} elevation={2}>
+                        <IconButton onClick={() => onDelete(id)}>
+                            <DeleteIcon />
+                        </IconButton>
+                        <IconButton onClick={handleEdit}>
+                            <EditIcon />
+                        </IconButton>
+                        <IconButton onClick={() => onUp(id)}>
+                            <UpIcon />
+                        </IconButton>
+                        <IconButton onClick={() => onDown(id)}>
+                            <DownIcon />
+                        </IconButton>
+                    </Paper>
+                )}
             </PictoContent>
             <Dialog
                 onClose={() => setEditOpen(false)}

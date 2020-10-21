@@ -23,6 +23,9 @@ const useStyles = makeStyles({
         border: "2px solid",
         position: "relative",
     },
+    imageClass: {
+        height: "168px", // Hardcoded. Should be same as width...
+    },
     control: {
         position: "absolute",
         border: "2px solid",
@@ -71,6 +74,7 @@ export default function Pictogram(props) {
         <>
             <PictoContent
                 className={classes.root}
+                imageClassName={classes.imageClass}
                 text={text}
                 img={img}
                 elevation={5}
@@ -97,6 +101,7 @@ export default function Pictogram(props) {
             >
                 <PictoContent
                     className={classes.root}
+                    imageClassName={classes.imageClass}
                     text={editText}
                     img={editImgUrl}
                     elevation={5}
@@ -134,11 +139,15 @@ export default function Pictogram(props) {
     );
 }
 
-function PictoContent({ img, text, className, children }) {
+function PictoContent({ img, text, className, imageClassName, children }) {
     return (
         <Paper className={className} elevation={5}>
             <CardContent>
-                <CardMedia component="img" image={img} />
+                <CardMedia
+                    className={imageClassName}
+                    component="img"
+                    image={img}
+                />
                 <Typography align="center" noWrap={true}>
                     {text}
                 </Typography>

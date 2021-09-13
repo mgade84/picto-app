@@ -3,6 +3,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
 import SearchIcon from "@material-ui/icons/Search";
 import AddIcon from "@material-ui/icons/Add";
+import CloseIcon from "@material-ui/icons/Close";
 import {
     Fab,
     IconButton,
@@ -21,11 +22,15 @@ const useStyles = makeStyles(theme => ({
         padding: "2px 4px",
         display: "flex",
         alignItems: "center",
-        width: 400,
     },
     input: {
         marginLeft: theme.spacing(1),
         flex: 1,
+    },
+    closeButton: {
+        position: "absolute",
+        right: theme.spacing(1),
+        top: theme.spacing(1),
     },
     iconButton: {
         padding: 10,
@@ -47,6 +52,7 @@ const useStyles = makeStyles(theme => ({
 function SearchDialog(props) {
     const { onClose, open } = props;
     const theme = useTheme();
+    const classes = useStyles();
     const fullscreen = useMediaQuery(theme.breakpoints.down("xs"));
 
     const [query, setQuery] = useState("");
@@ -85,6 +91,13 @@ function SearchDialog(props) {
         <Dialog onClose={handleClose} open={open} fullScreen={fullscreen}>
             <DialogTitle id="simple-dialog-title">
                 Icon search {loading && "loading..."}
+                <IconButton
+                    aria-label="close"
+                    className={classes.closeButton}
+                    onClick={handleClose}
+                >
+                    <CloseIcon />
+                </IconButton>
             </DialogTitle>
             <SearchForm handleSearch={handleSearch} />
             {renderSearchResults()}
